@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton';
+	import diacritics from 'diacritics';
 
 	const toastStore = getToastStore();
 
@@ -8,6 +9,7 @@
 	};
 
 	let input = '';
+	let splitted = [];
 
 	const count = () => {
 		const lines = input.split('\n');
@@ -19,7 +21,12 @@
 			// split lines by spaces
 			if (!line.length) continue;
 
-			const parts = line.replaceAll(`'`, ' ').replaceAll('-', ' ').split(/\s+/);
+			const formatted = diacritics
+				.remove(line)
+				.replace(/[^0-9a-zA-Z]+/g, ' ')
+				.trim();
+			console.log(formatted);
+			const parts = formatted.split(/\s+/);
 			console.log(parts);
 
 			total += parts.length;
