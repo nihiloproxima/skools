@@ -1,9 +1,10 @@
 <script lang="ts">
 	import _ from 'lodash';
+	import diacritics from 'diacritics';
 
 	let wordsCount = 3;
 	let gridSize = 10;
-	let words: string[] = ['un', 'deux', 'trois'];
+	let words: string[] = [];
 	let result: Array<Array<string | number>> = [];
 	let modes: { [mode: string]: boolean } = {
 		diagonal: true,
@@ -18,7 +19,7 @@
 
 		words = words
 			.filter((word) => word !== undefined && word.length > 0)
-			.map((word) => word.toUpperCase());
+			.map((word) => diacritics.remove(word).trim().toUpperCase());
 
 		const longestWord = words.reduce((a, b) => (a.length > b.length ? a : b));
 		gridSize = gridSize < longestWord.length ? longestWord.length : gridSize;
@@ -33,8 +34,6 @@
 
 		cleanGrid();
 		words = words.sort();
-
-		console.log(result);
 	};
 
 	const generateGrid = () => {
@@ -54,7 +53,7 @@
 
 		if (direction === 'diagonal') {
 			while (!canFitDiagonal(x, y, word)) {
-				x = _.random(gridSize - 1);
+				x = _.random(gridSize - 1, false);
 				y = _.random(gridSize - 1);
 			}
 			return addDiagonalWord(x, y, word);
@@ -198,7 +197,7 @@
 						{#each result as row, i (i)}
 							<tr>
 								{#each row as cell, j (j)}
-									<td class="px-5 py-4">{cell}</td>
+									<td class="px-5 py-4 font-bold cell">{cell}</td>
 								{/each}
 							</tr>
 						{/each}
@@ -210,4 +209,7 @@
 </div>
 
 <style scoped>
+	.cell {
+		font-family: Arial, 'Courier New', Courier, monospace;
+	}
 </style>
