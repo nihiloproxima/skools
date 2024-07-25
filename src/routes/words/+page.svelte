@@ -19,7 +19,7 @@
 
 		words = words
 			.filter((word) => word !== undefined && word.length > 0)
-			.map((word) => diacritics.remove(word).trim().toUpperCase());
+			.map((word) => word.trim().toUpperCase());
 
 		const longestWord = words.reduce((a, b) => (a.length > b.length ? a : b));
 		gridSize = gridSize < longestWord.length ? longestWord.length : gridSize;
