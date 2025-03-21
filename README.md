@@ -1,38 +1,61 @@
-# create-svelte
+# Skools
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Skools est une collection d'outils numériques conçus pour simplifier le quotidien des enseignants. Notre plateforme propose des solutions pratiques et intuitives pour la gestion de classe et l'organisation pédagogique.
 
-## Creating a project
+🌐 [Accéder à Skools](https://skools.vercel.app/)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## 🛠 Outils disponibles
+
+- Compteur de mots dans un texte
+- Générateur de mots cachés
+
+## 🚀 Développement
+
+Ce projet est construit avec [SvelteKit](https://kit.svelte.dev/), un framework moderne pour créer des applications web.
+
+### Prérequis
+
+- Node.js (version 16 ou supérieure)
+- npm ou pnpm
+
+### Installation
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
+# Cloner le repository
+git clone https://github.com/nihiloprixima/skools.git
+cd skools
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+# Installer les dépendances
+npm install
+# ou
+pnpm install
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+# Lancer le serveur de développement
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# ou
+pnpm dev
 ```
 
-## Building
+Le serveur de développement sera accessible à l'adresse `http://localhost:5173`
 
-To create a production version of your app:
+### Production
+
+Pour créer une version de production :
 
 ```bash
 npm run build
+# ou
+pnpm build
 ```
 
-You can preview the production build with `npm run preview`.
+Pour prévisualiser la version de production :
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+```bash
+npm run preview
+# ou
+pnpm preview
+```
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou proposer une pull request.
